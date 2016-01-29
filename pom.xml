@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.littleRain</groupId>
+	<artifactId>lucene-similarity-kn</artifactId>
+	<version>5.3.1</version>
+	<packaging>jar</packaging>
+	<name />
+	<description>lucene-similarity-kn</description>
+
+	<dependencies>
+
+		<dependency>
+	<groupId>org.apache.lucene</groupId>
+	<artifactId>lucene-core</artifactId>
+	<version>5.3.1</version>
+</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4.2</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+
+						<configuration>
+							<excludes>
+								<exclude>src/main/resources/**</exclude>
+								<exclude>*.properties</exclude>
+							</excludes>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+		</plugins>
+
+
+	</build>
+
+</project>
