@@ -11,10 +11,16 @@
 	<dependencies>
 
 		<dependency>
-	<groupId>org.apache.lucene</groupId>
-	<artifactId>lucene-core</artifactId>
-	<version>5.3.1</version>
-</dependency>
+			<groupId>com.littleRain</groupId>
+			<artifactId>commons-lr</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>5.3.1</version>
+		</dependency>
 
 	</dependencies>
 	<build>
