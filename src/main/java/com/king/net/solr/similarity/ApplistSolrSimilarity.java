@@ -19,13 +19,11 @@ public class ApplistSolrSimilarity extends DefaultSimilarity {
 
 	@Override
 	public float coord(int overlap, int maxOverlap) {
-		LOG.info("overlap:{};maxOverlap:{}", overlap, maxOverlap);
 		return overlap / (float) maxOverlap;
 	}
 
 	@Override
 	public float queryNorm(float sumOfSquaredWeights) {
-		LOG.info("sumOfSquaredWeights:{}", sumOfSquaredWeights);
 		return (float) (1.0 / Math.sqrt(sumOfSquaredWeights));
 	}
 
@@ -51,7 +49,7 @@ public class ApplistSolrSimilarity extends DefaultSimilarity {
 			
 		float lengthNorms = state.getBoost() * _lengthNorms;
 
-		LOG.info("numTerms:{},lengthNorms:{},getBoost:{}" ,numTerms, lengthNorms,state.getBoost());
+//		LOG.info("numTerms:{},lengthNorms:{},getBoost:{}" ,numTerms, lengthNorms,state.getBoost());
 
 		return lengthNorms;
 	}
@@ -60,20 +58,17 @@ public class ApplistSolrSimilarity extends DefaultSimilarity {
 	 * 关键词出现的频率对打分的影响，设置为1，则忽略关键词出现的频率
 	 */
 	public float tf(float freq) {
-		float tf_val =  (float) Math.sqrt(freq);
-		LOG.info("freq:{},tf_val:{}", freq,tf_val);
+//		float tf_val =  (float) Math.sqrt(freq);
 		return 1;
 	}
 
 	@Override
 	public float sloppyFreq(int distance) {
-		LOG.info("distance:{}", distance);
 		return 1.0f / (distance + 1);
 	}
 
 	@Override
 	public float scorePayload(int doc, int start, int end, BytesRef payload) {
-		LOG.info("doc:{},start:{},end:{},payload:{}", doc, start, end, payload);
 		return 1;
 	}
 
@@ -83,19 +78,16 @@ public class ApplistSolrSimilarity extends DefaultSimilarity {
 	@Override
 	public float idf(long docFreq, long numDocs) {
 		float idf_val = (float) (Math.log(numDocs / (double) (docFreq + 1)) + 1.0);
-		LOG.info("docFreq:{},numDocs:{},idf_val:{}", docFreq, numDocs,idf_val);
 		return idf_val;
 	}
 
 	@Override
 	public void setDiscountOverlaps(boolean v) {
-		LOG.info("v:{}", v);
 		discountOverlaps = v;
 	}
 
 	@Override
 	public boolean getDiscountOverlaps() {
-		LOG.info("getDiscountOverlaps():{}", discountOverlaps);
 		return discountOverlaps;
 	}
 
