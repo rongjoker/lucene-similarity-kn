@@ -26,12 +26,24 @@ public class DownloadsSolrSimilarity extends DefaultSimilarity {
 	@Override
 	public float queryNorm(float sumOfSquaredWeights) {
 		LOG.info("sumOfSquaredWeights:{}", sumOfSquaredWeights);
+		
 		return super.queryNorm(sumOfSquaredWeights);
 	}
 
 	@Override
 	public float lengthNorm(FieldInvertState state) {
-		return super.lengthNorm(state);
+		
+	    final int numTerms;
+	    if (discountOverlaps)
+	      numTerms = state.getLength() - state.getNumOverlap();
+	    else
+	      numTerms = state.getLength();
+	    
+	    float lengthNorm = state.getBoost() * ((float) (1.0 / Math.sqrt(numTerms)));//fieldNorm==lengthNorm
+	    LOG.error("numTerms:{},fieldNorm:{}",numTerms,lengthNorm);
+	    return lengthNorm;
+		
+//		return super.lengthNorm(state);
 	}
 
 	/**
